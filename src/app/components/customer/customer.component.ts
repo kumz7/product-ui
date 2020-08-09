@@ -10,7 +10,7 @@ import { AppService } from '../app.service';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
-  
+  @Input() isDisabled:boolean;
   @Input() object:customer;
   tableData:any;
   isGridEnabled:boolean = false;

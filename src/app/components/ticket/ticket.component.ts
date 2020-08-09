@@ -8,6 +8,7 @@ import { ticket } from './ticket';
 })
 export class TicketComponent implements OnInit {
   @Input() object:ticket;
+  @Input() isDisabled:boolean;
   service_list = ["Warranty","Non-Warranty","Free Service","Health Check-up"];
   constructor() {
     this.object = new ticket();

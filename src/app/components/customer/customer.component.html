@@ -10,8 +10,9 @@
           </div>
         </div>
       </div>
-      <div class="card-body" *ngIf="object">
-        <div class="row"  >
+      <app-disable-component [isDisabled]="isDisabled"></app-disable-component>   
+      <div class="card-body" >
+        <div class="row"  *ngIf="object">
             <div class="col-4" style="text-align: right;">
                 <label for="usr">Customer Name</label>
             </div>

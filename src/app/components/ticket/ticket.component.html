@@ -1,13 +1,14 @@
 <div class="container-fluid">
     <div class="card">
       <div class="card-header"><h6>Ticket Details</h6></div>
+      <app-disable-component [isDisabled]="isDisabled"></app-disable-component> 
       <div class="card-body">
         <div class="row"  >
             <div class="col-4" style="text-align: right;">
                 <label for="usr">Ticket #</label>
             </div>
             <div  class="col-8">
-                <input type="text" class="form-control" [(ngModel)]="object.ticket">
+                <input type="text" class="form-control" disabled [(ngModel)]="object.ticket">
             </div>
           </div>
           <div class="row"  >
@@ -15,7 +16,7 @@
                 <label for="usr">Date</label>
             </div>
             <div  class="col-8">
-                <input type="text" class="form-control" [(ngModel)]="object.date">
+                <input type="text" class="form-control" disabled [(ngModel)]="object.date">
             </div>
           </div>
           <div class="row"  >
