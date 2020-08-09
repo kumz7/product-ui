@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'search', component: SearchPageComponent },
   { path: 'customer', component: CustomerComponent }, 
   { path: 'menu', component: MenuComponent }, 
-  { path: '**', component: SearchPageComponent }, 
-  { path: '',   redirectTo: '/search', pathMatch: 'full' }
+  { path: '**', component: MenuComponent }, 
+  { path: '',   redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -35,7 +35,7 @@
                   {{object.service_type}} <span class="caret"></span>
                 </button>
                 <ul *dropdownMenu class="dropdown-menu" role="menu">
-                  <li role="menuitem" *ngFor="let option of service_list" (click)="selectServiceType(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                  <li role="menuitem" *ngFor="let option of service_list" (click)="selectServiceType(option)"><button class="dropdown-item" >{{option}}</button></li>
                 </ul>
             </div>
           </div>

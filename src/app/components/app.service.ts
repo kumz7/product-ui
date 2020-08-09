@@ -9,10 +9,10 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 })
 export class AppService {
   private selectedRow:Subject<any> = new BehaviorSubject([]);
-  setRow(obj:any){
+  public setRow(obj:any){
     this.selectedRow.next(obj);
   }
-  getRow():Observable<any> {
+  public getRow():Observable<any> {
     return this.selectedRow;
   }
   constructor(private request:HttpClient) {}

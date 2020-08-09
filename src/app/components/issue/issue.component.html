@@ -12,7 +12,7 @@
                       {{object.issue}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of issues" (click)="selectIssue(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                      <li role="menuitem" *ngFor="let option of issues" (click)="selectIssue(option)"><button class="dropdown-item" >{{option}}</button></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                       {{object.cpu}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of cpu" (click)="selectCpu(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                      <li role="menuitem" *ngFor="let option of cpu" (click)="selectCpu(option)"><button class="dropdown-item" >{{option}}</button></li>
                     </ul>
                 </div>
             </div>
@@ -59,14 +59,14 @@
                       {{object.ram}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of ram" (click)="selectRam(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                      <li role="menuitem" *ngFor="let option of ram" (click)="selectRam(option)"><button class="dropdown-item" >{{option}}</button></li>
                     </ul>
                 </div>
             </div>
             <div class="col-4">
               <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="odd" id="object.odd" name="object.odd" [(ngModel)]="object.odd">
-                <label class="custom-control-label" for="object.adpt">ODD</label>
+                <label class="custom-control-label" for="object.odd">ODD</label>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
                       {{object.hdd}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of hdd" (click)="selectHDD(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                      <li role="menuitem" *ngFor="let option of hdd" (click)="selectHDD(option)"><button class="dropdown-item" >{{option}}</button></li>
                     </ul>
                 </div>
             </div>

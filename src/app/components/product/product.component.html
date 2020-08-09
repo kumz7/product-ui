@@ -11,7 +11,7 @@
                   {{object.product}} <span class="caret"></span>
                 </button>
                 <ul *dropdownMenu class="dropdown-menu" role="menu">
-                  <li role="menuitem" *ngFor="let option of product_list" (click)="selectProduct(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                  <li role="menuitem" *ngFor="let option of product_list" (click)="selectProduct(option)"><button class="dropdown-item" >{{option}}</button></li>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 {{object.product_make}} <span class="caret"></span>
               </button>
               <ul *dropdownMenu class="dropdown-menu" role="menu">
-                <li role="menuitem" *ngFor="let option of product_make_list" (click)="selectProductMake(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                <li role="menuitem" *ngFor="let option of product_make_list" (click)="selectProductMake(option)"><button class="dropdown-item" >{{option}}</button></li>
               </ul>
           </div>          </div>
           <div class="row"  >

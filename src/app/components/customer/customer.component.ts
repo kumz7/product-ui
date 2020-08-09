@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { customer } from './customer';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../app.service';
 
 
@@ -14,12 +14,15 @@ export class CustomerComponent implements OnInit {
   @Input() object:customer;
   tableData:any;
   isGridEnabled:boolean = false;
-
+  key:string;
   constructor(
-    private router:ActivatedRoute,
+    private router:Router,
     private service:AppService
     ) {
 
+   }
+   search(){
+    this.router.navigate(["/search"], { queryParams: { key:this.key } });
    }
   ngOnChanges(changes: SimpleChanges): void{
     

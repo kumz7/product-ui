@@ -12,7 +12,8 @@ export class SearchPageComponent implements OnInit {
   isGridEnabled:boolean = false;
   key:string;
   constructor( private service:AppService,
-    private router:Router
+    private router:Router,
+    private aRouter:ActivatedRoute
     ) {}
   public search():void{
     this.service.getSearchResult(this.key).subscribe(data=>{
@@ -24,6 +25,10 @@ export class SearchPageComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.aRouter.queryParams.subscribe(param=>{
+      this.key = param["key"]; 
+      this.search();
+    })
    // this.tableData = this.service.getAllCustomers();
   }
   setCurrentCustomer(){
