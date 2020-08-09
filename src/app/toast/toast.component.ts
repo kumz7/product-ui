@@ -9,6 +9,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class ToastComponent implements OnInit {
   header;
   msgs;
+  test(){
+    
+  }
   public modalRef: BsModalRef; // {1}
   constructor(private modalService: BsModalService) {} // {2}
 
