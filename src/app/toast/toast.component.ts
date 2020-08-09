@@ -14,7 +14,9 @@ export class ToastComponent implements OnInit {
   }
   public modalRef: BsModalRef; // {1}
   constructor(private modalService: BsModalService) {} // {2}
+  public deploy(){
 
+  }
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template); // {3}
   }
