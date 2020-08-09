@@ -8,6 +8,7 @@ import { issue } from './issue';
 })
 export class IssueComponent implements OnInit {
   @Input() object:issue;
+  @Input() isDisabled:boolean;
   cpu:Array<string> = ["Pentium-III","Pentium-IV","Dual Core","Core 2 Duo","Intel i3","Intel i5","Intel i7","AMD","Xenon"];
   hdd:Array<string> = ["128GB","250GB","500GB","1TB","2TB","4TB","6TB"];
   ram:Array<string> = ["256MB","512MB","1GB","2GB","4GB","6GB","8GB","12GB","16GB","32GB","64GB","128GB"];

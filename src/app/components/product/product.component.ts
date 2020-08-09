@@ -7,7 +7,7 @@ import { product } from './product';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
+  @Input() isDisabled:boolean;
   @Input() object:product;
   product_list:Array<string>        = ["Laptop","Desktop","Printer","Scanner","UPS","Server","Storage"];
   product_make_list:Array<string>   = ["Dell","HP","Lenovo","Sony","Acer","Asus","Numeric","ICE","Zebronics","Luminous","APC","Canon","Mercury"]

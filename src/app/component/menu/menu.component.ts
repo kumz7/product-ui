@@ -14,22 +14,19 @@ import { product } from 'src/app/components/product/product';
 export class MenuComponent implements OnInit {
   isEnabled:boolean=true;
   object:any;
+  isDisabled:boolean = false;
   constructor(private service:AppService) { }
+
 
   ngOnInit() {
     this.service.getRow().subscribe(data=>{
       if(data.length==0){
-        let object:any = {};
-        object.customer = new customer();
-        object.ticket = new ticket();
-        object.issue = new issue();
-        object.estimation = new estimation();
-        object.product = new product();
-        this.service.setRow(object);
-        this.object = object;
+        this.clear();
       }
-      else
+      else{
+        this.isDisabled=false;
         this.object = data;
+      }
     })
   }
   public toggleCustomer():void {
@@ -38,11 +35,19 @@ export class MenuComponent implements OnInit {
   public save(){
     this.service.doMap();
   }
-  public update(){
-    
+  public edit(){
+    this.isDisabled =false;
   }
   public clear(){
-    
+    let object:any = {};
+    object.customer = new customer();
+    object.ticket = new ticket();
+    object.issue = new issue();
+    object.estimation = new estimation();
+    object.product = new product();
+    this.service.setRow(object);
+    this.object = object;
+    this.isDisabled=true;
   }
   public logout(){
     

@@ -17,6 +17,8 @@ import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from './grid/grid.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { MenuComponent } from './component/menu/menu.component';
+import { DisableComponentComponent } from './disable-component/disable-component.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { MenuComponent } from './component/menu/menu.component';
     ToastComponent,
     GridComponent,
     SearchPageComponent,
-    MenuComponent
+    MenuComponent,
+    DisableComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { MenuComponent } from './component/menu/menu.component';
     ModalModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
-  providers: [], 
+  /* provider meant for refresh 404 issue */
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

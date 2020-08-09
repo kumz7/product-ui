@@ -8,6 +8,7 @@ import { estimation } from './estimation';
 })
 export class EstimationComponent implements OnInit {
   @Input() object:estimation;
+  @Input() isDisabled:boolean;
   constructor() {
     this.object = new estimation();
    }
