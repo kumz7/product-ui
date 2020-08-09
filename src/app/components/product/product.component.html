@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><h6>Product</h6></div>
+      <div class="card-body">
+        <div class="row"  >
+          <div class="col-4" style="text-align: right;">
+            <label for="usr">Product</label>
+          </div>
+            <div class="dropdown col-8" dropdown>
+                <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                  {{object.product}} <span class="caret"></span>
+                </button>
+                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                  <li role="menuitem" *ngFor="let option of product_list" (click)="selectProduct(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                </ul>
+            </div>
+        </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Product Make</label>
+            </div>
+            <div class="dropdown col-8" dropdown>
+              <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                {{object.product_make}} <span class="caret"></span>
+              </button>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem" *ngFor="let option of product_make_list" (click)="selectProductMake(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+              </ul>
+          </div>          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Product Model</label>
+            </div>
+            <div  class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="object.product_model">
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Serial No</label>
+            </div>
+            <div class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="object.serial_no">
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Battery Serial No</label>
+            </div>
+            <div class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="object.battery_serial_no">
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Other Details</label>
+            </div>
+            <div class="col-8">
+                <textarea class="form-control" rows="3" [(ngModel)]="object.other_detail" id="comment"></textarea>
+            </div>
+          </div>
+      </div> 
+    </div>
+  </div>

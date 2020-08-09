@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><h6>Issue Description</h6></div>
+      <div class="card-body">
+        <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Issue</label>
+            </div>
+            <div  class="col-8">
+                <div class="dropdown" dropdown>
+                    <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                      {{object.issue}} <span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem" *ngFor="let option of issues" (click)="selectIssue(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Issue Description</label>
+            </div>
+            <div  class="col-8">
+                <textarea class="form-control" rows="3" [(ngModel)]="object.issue_description" id="comment"></textarea>
+            </div>
+          </div>
+        </div>
+          <!--     configurations    -->
+        <div class="card-footer">
+          <div class="row"  >
+            <div class="col-2" style="text-align: right;">
+                <label for="usr">CPU</label>
+            </div>
+            <div  class="col-6">
+                <div class="dropdown" dropdown>
+                    <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                      {{object.cpu}} <span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem" *ngFor="let option of cpu" (click)="selectCpu(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="object.adpt" name="object.adpt" [(ngModel)]="object.adpt">
+                <label class="custom-control-label" for="object.adpt">ADPT</label>
+              </div>
+            </div>
+          </div>
+            <div class="row"  >
+            <div class="col-2" style="text-align: right;">
+                <label for="usr">RAM</label>
+            </div>
+            <div  class="col-6">
+                <div class="dropdown" dropdown>
+                    <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                      {{object.ram}} <span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem" *ngFor="let option of ram" (click)="selectRam(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="odd" id="object.odd" name="object.odd" [(ngModel)]="object.odd">
+                <label class="custom-control-label" for="object.adpt">ODD</label>
+              </div>
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-2" style="text-align: right;">
+                <label for="usr">HDD</label>
+            </div>
+            <div  class="col-6">
+                <div class="dropdown" dropdown>
+                    <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                      {{object.hdd}} <span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem" *ngFor="let option of hdd" (click)="selectHDD(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="object.p_cord" name="object.p_cord" [(ngModel)]="object.p_cord">
+                <label class="custom-control-label" for="object.p_cord">P.CORD</label>
+              </div>
+            </div>
+          </div>
+          <div class="row"  >
+            <div  class="col-8"></div>
+            <div  class="col-4">
+                <!-- Default checked -->
+                <div  class="co7">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="object.bag" name="object.bag" [(ngModel)]="object.bag">
+                        <label class="custom-control-label" for="object.bag">BAG</label>
+                    </div>
+
+                </div>
+        </div>
+            <!--      config ends     -->
+        </div>
+    </div>

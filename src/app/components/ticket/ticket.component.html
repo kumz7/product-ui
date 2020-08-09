@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><h6>Ticket Details</h6></div>
+      <div class="card-body">
+        <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Ticket #</label>
+            </div>
+            <div  class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="object.ticket">
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Date</label>
+            </div>
+            <div  class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="object.date">
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Engineer Name</label>
+            </div>
+            <div  class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="object.engineer_name">
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-4" style="text-align: right;">
+                <label for="usr">Service Type</label>
+            </div>
+            <div class="dropdown col-8" dropdown>
+                <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                  {{object.service_type}} <span class="caret"></span>
+                </button>
+                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                  <li role="menuitem" *ngFor="let option of service_list" (click)="selectServiceType(option)"><a class="dropdown-item" href="#">{{option}}</a></li>
+                </ul>
+            </div>
+          </div>
+      </div> 
+    </div>
+  </div>

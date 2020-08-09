@@ -1,0 +1,31 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">New Ticket</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#customer">Customer Detail</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#invoice">Invoice</a>
+    </li>
+  </ul>
+
+<div class="row">
+    <app-customer (toggleCustomer)="toggleCustomer()" [object]="object.customer" class="col" style="padding-right:0px"></app-customer>
+    <app-ticket *ngIf="isEnabled" class="col" style="padding-left:0px" [object]="object.ticket"></app-ticket>
+</div>
+<div class="row" *ngIf="isEnabled">
+    <app-product class="col" style="padding-right:0px" [object]="object.product"></app-product>
+    <app-issue class="col" style="padding-left:0px" [object]="object.issue"></app-issue>
+</div>
+<div *ngIf="isEnabled">
+    <app-estimation [object]="object.estimation"></app-estimation> 
+</div>
+<div class="card-footer" *ngIf="isEnabled">
+    <div class="row"  >
+        <div  class="col"><button type="button" (click)="save()" class="btn btn-success" style="width:80%"><i class="fa fa-floppy-o " aria-hidden="true"></i></button></div>
+        <div  class="col"><button type="button" (click)="update()" class="btn btn-primary" style="width:80%"><i class="fa fa-pencil " aria-hidden="true"></i></button></div>
+        <div  class="col"><button type="button" (click)="clear()" class="btn btn-secondary" style="width:80%"><i class="fa fa-eraser " aria-hidden="true"></i></button></div>
+        <div  class="col"><button type="button" (click)="logout()" class="btn btn-danger" style="width:80%"><i class="fa fa-power-off " aria-hidden="true"></i></button></div>
+    </div>
+</div>
