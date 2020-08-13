@@ -1,0 +1,203 @@
+<div class="container-fluid">    
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-7" style="margin-top:10px">
+                <h4>Repair and Service Report</h4>
+            </div>
+            <div class="col-5">
+                <div>  <img src="assets/logo.png" style="width: 241px;height: 54px;" class="rounded" alt="Cinque Terre" width="304" height="236"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <h5>Customer Details</h5>
+            <div class="row">
+                <div class="col-6">
+                <table class="table ">
+                <tbody>
+                    <tr>
+                    <td>Customer Name</td>
+                    <td>{{object.customer.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td>{{object.customer.contact}}</td>
+                    </tr>
+                    <tr>
+                        <td>Alt. Contact Number</td>
+                        <td>{{object.customer.altcontact}}</td>
+                    </tr>
+                    <tr>
+                        <td>Service Type</td>
+                        <td>{{object.ticket.service_type}}</td>
+                    </tr>
+                    <tr>
+                        <td>Engineer Name</td>
+                        <td>{{object.ticket.engineer_name}}</td>
+                    </tr>
+                    </tbody>
+                </table>  
+            </div>
+            <div class="col col-6">
+                <table class="table">
+                <tbody>
+                    <tr>
+                    <td>Workorder Number</td>
+                    <td>{{object.ticket.ticket}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>{{object.ticket.date}}</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+</div>
+<h5>Product Details</h5>
+<div class="row">
+    <div class="col col-6">
+        <table class="table">
+        <tbody>
+            <tr>
+            <td>Product</td>
+            <td>{{object.product.product}}</td>
+            </tr>
+            <tr>
+                <td>Product Make</td>
+                <td>{{object.product.product_make}}</td>
+            </tr>
+            <tr>
+                <td>Product Model</td>
+                <td>{{object.product.product_model}}</td>
+                </tr>
+                <tr>
+                    <td>Item Ref. No</td>
+                    <td>{{object.product.serial_no}}</td>
+                </tr>
+                <tr>
+                    <td>Battery Ref. No</td>
+                    <td>{{object.product.battery_serial_no}}</td>
+                    </tr>
+                    <tr>
+                        <td>Otder Details</td> 
+                        <td>{{object.product.other_detail}}</td>
+                    </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="col col-3">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>HDD</td>
+                    <td>{{object.issue.hdd}}</td>
+                </tr>
+                <tr>
+                    <td>CPU</td>
+                    <td>{{object.issue.cpu}}</td>
+                </tr>
+                <tr>
+                    <td>ADPT</td>
+                    <td>{{object.issue.adpt}}</td>
+                </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="col col-3">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>RAM</td>
+                    <td>{{object.issue.ram}}</td>
+                </tr>
+                <tr>
+                    <td>ODD</td>
+                    <td>{{object.issue.odd}}</td>
+                </tr>
+                <tr>
+                    <td>BAG</td>
+                    <td>{{object.issue.bag}}</td>
+                </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+<h5>Issue Details</h5>
+    <div class="row">
+                <div class="col col-12">
+                    <table class="table">
+                        <tbody>
+                                <tr>
+                                    <td>Issue</td>
+                                    <td>{{object.issue.issue}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Issue Description</td>
+                                    <td>{{object.issue.issue_description}}</td>
+                                </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+<h5>Repair Estimation Cost</h5>
+<div class="row">
+            <div class="col col-6">
+                <table class="table">
+                    <tbody>
+                            <tr>
+                                <td>Estimation Quote</td>
+                                <td>{{object.estimation.estimation_quote}}</td>
+                            </tr>
+                            <tr>
+                                <td>Service Charge</td>
+                                <td>{{object.estimation.service_charge}}</td>
+                            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col col-6">
+            <table class="table">
+                <tbody>
+                        <tr>
+                            <td>Repair Amount</td>
+                            <td>total calculated by everything</td>
+                        </tr>
+                        <tr>
+                            <td>Advance Amount</td>
+                            <td>{{object.estimation.advance_amount}}</td>
+                        </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<div class="row" style="margin-top:50px;">
+    <div class="col-2"></div>
+    <div class="col-4">Customer Signature</div>
+    <div class="col-2"></div>
+    <div class="col-4">Authorized Signature</div>
+</div>
+<div class="card-footer">
+    <h6 style="border-bottom:1px solid grey">Tearms & Conditions</h6>
+    <ul style="list-style-type: decimal;">
+        <li>Customer are advised to make telephone enquiry at respective collection center before collecting goods.</li>
+        <li>Job sheet must be produced in order to collect the goods.</li>
+        <li>Items to be collected within 2 months, falling which MSR Infotech deserves the right to dispose off, at its discretion to recover storage and repair
+        costs.</li>
+        <li>Warranty claim, if any, must be supported with relevant documents.</li>
+        <li>Warranty for repaired items (Out of warranty items) is 1 month only.</li>
+        <li>MSR Infotech will not be hold responsible for any damage or additional unidentified repairs or equipment left in its premises.</li>
+        <li>MSR Infotech Will not be responsible for goods under service should there be any reported theft or fire within the premise.</li>
+    </ul>
+    <ul style="    border: 1px solid grey;">
+        <li>
+            Address : No.74, Bazzar Road, Sadasivam Nagar, Madipakkam, Chennai - 600 091
+        </li>
+        <li>
+            Phone : 044 - 35353535 | +91-8903838147 | 9597526677
+        </li>
+    </ul>
+</div>

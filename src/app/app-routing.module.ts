@@ -5,12 +5,14 @@ import { ProductComponent } from './components/product/product.component';
 import { AppComponent } from './app.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { MenuComponent } from './component/menu/menu.component';
+import { InvoiceComponent } from './component/invoice/invoice.component';
 
 
 const routes: Routes = [
   { path: 'error', component: MenuComponent }, 
   { path: 'search', component: SearchPageComponent },
   { path: 'customer', component: CustomerComponent }, 
+  { path: 'invoice', component: InvoiceComponent }, 
   { path: 'menu', component: MenuComponent }, 
   { path: '**', component: MenuComponent }, 
   { path: '',   redirectTo: '/', pathMatch: 'full' }

@@ -19,6 +19,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { DisableComponentComponent } from './disable-component/disable-component.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { InvoiceComponent } from './component/invoice/invoice.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     GridComponent,
     SearchPageComponent,
     MenuComponent,
+    InvoiceComponent,
     DisableComponentComponent
   ],
   imports: [
@@ -44,7 +46,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     BsDropdownModule.forRoot()
   ],
   /* provider meant for refresh 404 issue */
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}], 
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},  { provide: Window,  useValue: window }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

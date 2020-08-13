@@ -33,10 +33,10 @@ export class MenuComponent implements OnInit {
     this.isEnabled = !this.isEnabled;
   }
   public save(){
-    this.service.doMap();
+    this.service.doMapNavigatetoInvoice();
   }
   public edit(){
-    this.isDisabled =false;
+    this.isDisabled = true;
   }
   public clear(){
     let object:any = {};
