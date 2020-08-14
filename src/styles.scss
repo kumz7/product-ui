@@ -43,6 +43,7 @@
     max-height: 275px;
     overflow: scroll;
     border-radius: 11px;
+    z-index: 10000;
 }
 
 .dropdown-item:hover{

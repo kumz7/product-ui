@@ -5,6 +5,7 @@ import { ticket } from 'src/app/components/ticket/ticket';
 import { issue } from 'src/app/components/issue/issue';
 import { estimation } from 'src/app/components/estimation/estimation';
 import { product } from 'src/app/components/product/product';
+import { Engineer } from 'src/app/components/engineer/engineer';
 
 @Component({
   selector: 'app-menu',
@@ -49,6 +50,7 @@ export class MenuComponent implements OnInit {
     object.issue = new issue();
     object.estimation = new estimation();
     object.product = new product();
+    object.engineer = new Engineer();
     this.service.setRow(object);
     this.object = object;
     this.isDisabled=true;

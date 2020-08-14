@@ -8,7 +8,7 @@
                     <label for="usr">Engineer Remarks</label>
                 </div>
                 <div  class="col-8">
-                    <textarea class="form-control" rows="9" [(ngModel)]="remarks" id="comment"></textarea>
+                    <textarea class="form-control" rows="9" [(ngModel)]="object.remarks" id="comment"></textarea>
                 </div>
               </div>
               
@@ -19,7 +19,7 @@
                 <div  class="col-8">
                     <div class="dropdown" dropdown>
                         <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
-                          <span class="caret"></span>
+                          <span class="caret">{{object.status}}</span>
                         </button>
                         <ul *dropdownMenu class="dropdown-menu" role="menu">
                           <li role="menuitem" *ngFor="let option of status" (click)="selectStatus(option)"><button class="dropdown-item" >{{option}}</button></li>
@@ -35,7 +35,7 @@
                         <div  class="col-8">
                             <div class="dropdown" dropdown>
                                 <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
-                                <span class="caret"></span>
+                                <span class="caret">{{object.parts}}</span>
                                 </button>
                                 <ul *dropdownMenu class="dropdown-menu" role="menu">
                                 <li role="menuitem" *ngFor="let option of parts" (click)="selectParts(option)"><button class="dropdown-item" >{{option}}</button></li>
