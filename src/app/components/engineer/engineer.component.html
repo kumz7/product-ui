@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <app-disable-component [isDisabled]="true"></app-disable-component> 
+      <div class="card">
+        <div class="card-header"><h6>Engineer Concent</h6></div>
+        <div class="card-body">   
+            <div class="row"  >
+                <div class="col-4" style="text-align: right;">
+                    <label for="usr">Engineer Remarks</label>
+                </div>
+                <div  class="col-8">
+                    <textarea class="form-control" rows="9" [(ngModel)]="remarks" id="comment"></textarea>
+                </div>
+              </div>
+              
+              <div class="row"  >
+                <div class="col-4" style="text-align: right;">
+                    <label for="usr">Call Status</label>
+                </div>
+                <div  class="col-8">
+                    <div class="dropdown" dropdown>
+                        <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                          <span class="caret"></span>
+                        </button>
+                        <ul *dropdownMenu class="dropdown-menu" role="menu">
+                          <li role="menuitem" *ngFor="let option of status" (click)="selectStatus(option)"><button class="dropdown-item" >{{option}}</button></li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+                <div class="row"  >
+                        <div class="col-4" style="text-align: right;">
+                            <label for="usr">Part Replaced</label>
+                        </div>
+
+                        <div  class="col-8">
+                            <div class="dropdown" dropdown>
+                                <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+                                <span class="caret"></span>
+                                </button>
+                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem" *ngFor="let option of parts" (click)="selectParts(option)"><button class="dropdown-item" >{{option}}</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </div>
+</div>

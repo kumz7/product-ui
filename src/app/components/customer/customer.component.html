@@ -4,7 +4,7 @@
         <button type="button" (click)="toggleWindow()" class="btn btn-light hdr-button" ><i class="fa fa-expand text-warning" aria-hidden="true"></i></button>
         <!-- <button type="button" (click)="save()" class="btn btn-light hdr-button" ><i class="fa fa-floppy-o text-success" aria-hidden="true"></i></button> -->
         <div class="input-group col-4 search-button">
-          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="key">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="key" style="height: 40px;">
           <div class="input-group-append">
             <button class="btn btn-success" type="submit" (click)="search()" ><i class="fa fa-search " aria-hidden="true"></i></button>
           </div>

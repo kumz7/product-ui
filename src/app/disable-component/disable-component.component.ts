@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-disable-component',
@@ -12,6 +12,13 @@ export class DisableComponentComponent implements OnInit, OnChanges {
   w:string = "0px";
   h:string= "0px";
   ngOnChanges(change:SimpleChanges){
+    setTimeout(() => {
+      this.w = this.dom.nativeElement.parentElement.nextSibling.offsetWidth+"px";
+      this.h = this.dom.nativeElement.parentElement.nextSibling.offsetHeight+"px";
+    }, 100);
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
     setTimeout(() => {
       this.w = this.dom.nativeElement.parentElement.nextSibling.offsetWidth+"px";
       this.h = this.dom.nativeElement.parentElement.nextSibling.offsetHeight+"px";

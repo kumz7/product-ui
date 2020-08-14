@@ -20,6 +20,7 @@ import { MenuComponent } from './component/menu/menu.component';
 import { DisableComponentComponent } from './disable-component/disable-component.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { InvoiceComponent } from './component/invoice/invoice.component';
+import { EngineerComponent } from './components/engineer/engineer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { InvoiceComponent } from './component/invoice/invoice.component';
     SearchPageComponent,
     MenuComponent,
     InvoiceComponent,
-    DisableComponentComponent
+    DisableComponentComponent,
+    EngineerComponent
   ],
   imports: [
     BrowserModule,

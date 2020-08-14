@@ -13,6 +13,7 @@ import { product } from 'src/app/components/product/product';
 })
 export class MenuComponent implements OnInit {
   isEnabled:boolean=true;
+  isProduct:boolean = true;
   object:any;
   isDisabled:boolean = false;
   constructor(private service:AppService) { }
@@ -37,6 +38,9 @@ export class MenuComponent implements OnInit {
   }
   public edit(){
     this.isDisabled = true;
+  }
+  public engineer(){
+    this.isProduct = !this.isProduct; 
   }
   public clear(){
     let object:any = {};
