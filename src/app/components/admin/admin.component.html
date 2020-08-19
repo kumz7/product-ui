@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>ADMIN</h2>
+    <p>Add custom values to dropdown fields</p>
+    <div class="dropdown" dropdown>
+        <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
+          {{selected}} <span class="caret"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem" *ngFor="let option of options" (click)="selectOption(option)"><button class="dropdown-item" >{{option}}</button></li>
+        </ul>
+    </div>
+  
+<div>
+    <div class="input-group mb-3" style="margin-top:25px">
+        <input type="text" class="form-control" placeholder="Add {{selected}} Entries" [(ngModel)]="value">
+        <div class="input-group-append">
+          <button class="input-group-text btn-success" (click)="store()" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+        <div class="input-group-append">
+            <button class="input-group-text btn-danger" (click)="delete()"><i class="fa fa-minus" aria-hidden="true"></i></button>
+          </div>
+      </div>
+  <table class="table table-hover">
+    <thead>
+      <tr >
+        <th>{{selected}} Values</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let val of values">
+        <td>{{val.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

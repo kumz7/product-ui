@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ticket } from './ticket';
+import { AppService } from '../app.service';
+import { utils } from '../utils';
 
 @Component({
   selector: 'app-ticket',
@@ -9,10 +11,9 @@ import { ticket } from './ticket';
 export class TicketComponent implements OnInit {
   @Input() object:ticket;
   @Input() isDisabled:boolean;
-  service_list = ["Warranty","Non-Warranty","Free Service","Health Check-up"];
-  constructor() {
-    this.object = new ticket();
-    this.object.service_type = this.service_list[0];
+  @Input() service_list = [];
+  constructor(public service:AppService) {
+
    }
 
    selectServiceType(option:string){
@@ -20,6 +21,7 @@ export class TicketComponent implements OnInit {
     }
 
   ngOnInit() {
+    
   }
 
 }

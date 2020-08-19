@@ -21,6 +21,11 @@ import { DisableComponentComponent } from './disable-component/disable-component
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { InvoiceComponent } from './component/invoice/invoice.component';
 import { EngineerComponent } from './components/engineer/engineer.component';
+import { LoginComponent } from './components/login/login.component';
+import {  Data } from '@angular/router';
+import { LoadingComponent } from './components/loading/loading.component';
+import { InvoiceFinalComponent } from './components/invoice-final/invoice-final.component';
+import { AdminComponent } from './components/admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,11 @@ import { EngineerComponent } from './components/engineer/engineer.component';
     MenuComponent,
     InvoiceComponent,
     DisableComponentComponent,
-    EngineerComponent
+    EngineerComponent,
+    LoginComponent,
+    LoadingComponent,
+    InvoiceFinalComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +57,8 @@ import { EngineerComponent } from './components/engineer/engineer.component';
     BsDropdownModule.forRoot()
   ],
   /* provider meant for refresh 404 issue */
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},  { provide: Window,  useValue: window }],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

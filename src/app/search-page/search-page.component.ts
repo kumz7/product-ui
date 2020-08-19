@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../components/app.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { mType } from '../toast/mType';
 
 @Component({
   selector: 'app-search-page',
@@ -20,8 +21,10 @@ export class SearchPageComponent implements OnInit {
       this.tableData = data; 
     },
     error=>{
-      console.log(error);
+      this.service.showToast(error.status,JSON.stringify(error),mType.error);
       return error;
+    },()=>{
+      this.service.showToast("Success","Records retrived",mType.success)
     });
   }
   ngOnInit() {
@@ -32,6 +35,7 @@ export class SearchPageComponent implements OnInit {
    // this.tableData = this.service.getAllCustomers();
   }
   setCurrentCustomer(){
+    this.service.isDisabled = true;
     this.router.navigateByUrl('/menu')
   }
 }

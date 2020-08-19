@@ -1,0 +1,34 @@
+.spin,
+.grow{
+    position:fixed;
+    top:40%;
+    left:40%;
+}
+.spinner-grow{
+    margin:10px;
+}
+.container-fluid{
+    background:white;
+    z-index:100000000;
+    width:100%;
+    height:calc(100% + 20px);
+    position: fixed;
+    top:-20px;
+    opacity: 0.8;
+}
+button{
+    position:fixed;
+    left:44%;
+    top:42%;
+    border:none;
+}
+.spinner-border-sm {
+    width: 10rem !important; 
+    height: 10rem !important;
+    border-width: .7em !important;
+}
+.txt{
+    position: absolute;
+    top: 41%;
+    left: 34%;
+}

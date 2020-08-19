@@ -6,6 +6,8 @@ import { issue } from 'src/app/components/issue/issue';
 import { estimation } from 'src/app/components/estimation/estimation';
 import { product } from 'src/app/components/product/product';
 import { Engineer } from 'src/app/components/engineer/engineer';
+import { mType } from 'src/app/toast/mType';
+import { HttpBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu',
@@ -16,17 +18,27 @@ export class MenuComponent implements OnInit {
   isEnabled:boolean=true;
   isProduct:boolean = true;
   object:any;
-  isDisabled:boolean = false;
-  constructor(private service:AppService) { }
+  
 
+
+  isDisabled:boolean = false;
+  constructor(public service:AppService) { 
+    this.service.getAllMap();
+  }
 
   ngOnInit() {
+    let options = this.service.options;
+    //this.service_list = utils.filter(options,"SERVICE TYPE");
+
     this.service.getRow().subscribe(data=>{
       if(data.length==0){
         this.clear();
       }
       else{
-        this.isDisabled=false;
+        if(this.service.isDisabled)
+          this.isDisabled = false;
+        else
+          this.isDisabled = true;
         this.object = data;
       }
     })
@@ -56,7 +68,10 @@ export class MenuComponent implements OnInit {
     this.isDisabled=true;
   }
   public logout(){
-    
+    this.service.logout();
+  }
+  public jobsheet(){
+    this.service.gotoJobSheet();
   }
 
 }

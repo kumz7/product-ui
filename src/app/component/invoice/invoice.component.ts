@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { AppService } from 'src/app/components/app.service';
 import { Router } from '@angular/router';
 
@@ -8,16 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit, AfterViewInit {
-  object:any;
-  constructor(private service:AppService,private router:Router, private window: Window) { }
+  @Input() object:any;
+  constructor(private service:AppService,private router:Router) { }
   ngOnInit(){
-    this.service.getRow().subscribe(obj=>{
-      this.object = obj;    
-    });
+    this.object = this.service.currentData;
   }
   ngAfterViewInit(){
     setTimeout(() => {
-        this.window.print();  
+        window.print(); 
         this.router.navigateByUrl('/menu');
     }, 500);
   }

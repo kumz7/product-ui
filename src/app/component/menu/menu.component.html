@@ -1,3 +1,5 @@
+<app-toast  ></app-toast>
+<app-loading [hidden]="!service.isSpinner"></app-loading>
 <!-- <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">New Ticket</a>
@@ -10,9 +12,9 @@
     </li>
   </ul> -->
 
-<div class="row">
+<div class="row" *ngIf="isEnabled">
     <app-customer [isDisabled]="isDisabled" (toggleCustomer)="toggleCustomer()" [object]="object.customer" class="col" style="padding-right:0px"></app-customer>
-    <app-ticket *ngIf="isEnabled" [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.ticket"></app-ticket>
+    <app-ticket  [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.ticket"></app-ticket>
 </div>
 <div class="row" *ngIf="isEnabled">
     <app-product [isDisabled]="isDisabled" class="col" [hidden]="!isProduct" style="padding-right:0px" [object]="object.product"></app-product>
@@ -27,6 +29,7 @@
         <div  class="col"><button type="button" (click)="save()" class="btn btn-success" style="width:80%"><i class="fa fa-floppy-o " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="edit()" class="btn btn-primary" style="width:80%"><i class="fa fa-pencil " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="engineer()" class="btn btn-info" style="width:80%"><i class="fa fa-wrench " aria-hidden="true"></i></button></div>
+        <div  class="col"><button type="button" (click)="jobsheet()" [attr.disabled]="isDisabled?'disabled':null" class="btn btn-warning" style="width:80%"><i class="fa fa-newspaper-o " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="clear()" class="btn btn-secondary" style="width:80%"><i class="fa fa-eraser " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="logout()" class="btn btn-danger" style="width:80%"><i class="fa fa-power-off " aria-hidden="true"></i></button></div>
     </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { product } from './product';
+import { AppService } from '../app.service';
+import { utils } from '../utils';
 
 @Component({
   selector: 'app-product',
@@ -12,10 +14,11 @@ export class ProductComponent implements OnInit {
   product_list:Array<string>        = ["Laptop","Desktop","Printer","Scanner","UPS","Server","Storage"];
   product_make_list:Array<string>   = ["Dell","HP","Lenovo","Sony","Acer","Asus","Numeric","ICE","Zebronics","Luminous","APC","Canon","Mercury"]
 
-  constructor() { 
+  constructor(public service:AppService) { 
     this.object = new product();
-    this.object.product = this.product_list[0];
-    this.object.product_make = this.product_make_list[0];
+    let options = this.service.options;
+    this.object.product = utils.filter(options,"PRODUCT");
+    this.object.product_make = utils.filter(options,"PRODUCT MAKE");;
   }
 
   ngOnInit() {

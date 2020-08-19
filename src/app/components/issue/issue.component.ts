@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { issue } from './issue';
+import { AppService } from '../app.service';
+import { utils } from '../utils';
 
 @Component({
   selector: 'app-issue',
@@ -14,14 +16,15 @@ export class IssueComponent implements OnInit {
   ram:Array<string> = ["256MB","512MB","1GB","2GB","4GB","6GB","8GB","12GB","16GB","32GB","64GB","128GB"];
   issues:Array<string> = ["No Power On","No Display","Battery Charging","Blank Screen","Blue screen","Not Booting","Windows re-installation","Flickering Screen","Screen replacement"];
 
-  constructor() {
+  constructor(public service:AppService) {
     this.object = new issue();
-    this.object.cpu= this.cpu[0];
-    this.object.hdd= this.hdd[0];
-    this.object.ram= this.ram[0];
-    this.object.issue= this.issues[0];
+    let options = this.service.options;
+    this.object.cpu= utils.filter(options,"CPU");
+    this.object.hdd= utils.filter(options,"HDD");;
+    this.object.ram= utils.filter(options,"RAM");;
+    this.object.issue= utils.filter(options,"ISSUE");;
    }
-   
+
    selectIssue(option:string){
       this.object.issue = option;
     }

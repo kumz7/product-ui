@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { InvoiceComponent } from './component/invoice/invoice.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'search', component: SearchPageComponent },
   { path: 'customer', component: CustomerComponent }, 
   { path: 'invoice', component: InvoiceComponent }, 
+  { path: 'login', component: LoginComponent }, 
   { path: 'menu', component: MenuComponent }, 
+  { path: 'admin', component: AdminComponent }, 
   { path: '**', component: MenuComponent }, 
   { path: '',   redirectTo: '/', pathMatch: 'full' }
 ];
