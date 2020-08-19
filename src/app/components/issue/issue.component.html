@@ -13,7 +13,7 @@
                       {{object.issue}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of issues" (click)="selectIssue(option)"><button class="dropdown-item" >{{option}}</button></li>
+                      <li role="menuitem" *ngFor="let option of issues" (click)="selectIssue(option)"><button class="dropdown-item" >{{option.value}}</button></li>
                     </ul>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                       {{object.cpu}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of cpu" (click)="selectCpu(option)"><button class="dropdown-item" >{{option}}</button></li>
+                      <li role="menuitem" *ngFor="let option of cpu" (click)="selectCpu(option)"><button class="dropdown-item" >{{option.value}}</button></li>
                     </ul>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                       {{object.ram}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of ram" (click)="selectRam(option)"><button class="dropdown-item" >{{option}}</button></li>
+                      <li role="menuitem" *ngFor="let option of ram" (click)="selectRam(option)"><button class="dropdown-item" >{{option.value}}</button></li>
                     </ul>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                       {{object.hdd}} <span class="caret"></span>
                     </button>
                     <ul *dropdownMenu class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor="let option of hdd" (click)="selectHDD(option)"><button class="dropdown-item" >{{option}}</button></li>
+                      <li role="menuitem" *ngFor="let option of hdd" (click)="selectHDD(option)"><button class="dropdown-item" >{{option.value}}</button></li>
                     </ul>
                 </div>
             </div>

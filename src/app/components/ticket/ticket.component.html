@@ -31,12 +31,12 @@
             <div class="col-4" style="text-align: right;">
                 <label for="usr">Service Type</label>
             </div>
-            <div class="dropdown col-8" dropdown>
+            <div class="dropdown col-8" dropdown *ngIf="service_list">
                 <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
                   {{object.service_type}} <span class="caret"></span>
                 </button>
-                <ul *dropdownMenu class="dropdown-menu" role="menu">
-                  <li role="menuitem" *ngFor="let option of service_list" (click)="selectServiceType(option)"><button class="dropdown-item" >{{option}}</button></li>
+                <ul *dropdownMenu class="dropdown-menu" role="menu"  >
+                  <li role="menuitem" *ngFor="let option of service_list" (click)="selectServiceType(option)"><button class="dropdown-item" >{{option.value}}</button></li>
                 </ul>
             </div>
           </div>

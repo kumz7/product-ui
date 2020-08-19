@@ -14,12 +14,12 @@
 
 <div class="row" *ngIf="isEnabled">
     <app-customer [isDisabled]="isDisabled" (toggleCustomer)="toggleCustomer()" [object]="object.customer" class="col" style="padding-right:0px"></app-customer>
-    <app-ticket  [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.ticket"></app-ticket>
+    <app-ticket  [service_list]="serviceType" [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.ticket"></app-ticket>
 </div>
 <div class="row" *ngIf="isEnabled">
-    <app-product [isDisabled]="isDisabled" class="col" [hidden]="!isProduct" style="padding-right:0px" [object]="object.product"></app-product>
+    <app-product [product_list]="product" [product_make_list]="productMake" [isDisabled]="isDisabled" class="col" [hidden]="!isProduct" style="padding-right:0px" [object]="object.product"></app-product>
     <app-engineer [isDisabled]="isDisabled"  class="col" style="padding-right:0px" [object]="object.engineer" [hidden]="isProduct"></app-engineer>
-    <app-issue  [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.issue"></app-issue>
+    <app-issue  [cpu]="cpu" [hdd]="hdd" [ram]="ram" [issues]="issue" [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.issue"></app-issue>
 </div>
 <div *ngIf="isEnabled">
     <app-estimation [isDisabled]="isDisabled" [object]="object.estimation"></app-estimation> 

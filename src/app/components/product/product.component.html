@@ -7,12 +7,12 @@
           <div class="col-4" style="text-align: right;">
             <label for="usr">Product</label>
           </div>
-            <div class="dropdown col-8" dropdown>
+            <div class="dropdown col-8" dropdown *ngIf="product_list">
                 <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
                   {{object.product}} <span class="caret"></span>
                 </button>
                 <ul *dropdownMenu class="dropdown-menu" role="menu">
-                  <li role="menuitem" *ngFor="let option of product_list" (click)="selectProduct(option)"><button class="dropdown-item" >{{option}}</button></li>
+                  <li role="menuitem" *ngFor="let option of product_list" (click)="selectProduct(option)"><button class="dropdown-item" >{{option.value}}</button></li>
                 </ul>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 {{object.product_make}} <span class="caret"></span>
               </button>
               <ul *dropdownMenu class="dropdown-menu" role="menu">
-                <li role="menuitem" *ngFor="let option of product_make_list" (click)="selectProductMake(option)"><button class="dropdown-item" >{{option}}</button></li>
+                <li role="menuitem" *ngFor="let option of product_make_list" (click)="selectProductMake(option)"><button class="dropdown-item" >{{option.value}}</button></li>
               </ul>
           </div>          </div>
           <div class="row"  >

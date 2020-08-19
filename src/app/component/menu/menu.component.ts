@@ -8,6 +8,7 @@ import { product } from 'src/app/components/product/product';
 import { Engineer } from 'src/app/components/engineer/engineer';
 import { mType } from 'src/app/toast/mType';
 import { HttpBackend } from '@angular/common/http';
+import { utils } from 'src/app/components/utils';
 
 @Component({
   selector: 'app-menu',
@@ -19,17 +20,29 @@ export class MenuComponent implements OnInit {
   isProduct:boolean = true;
   object:any;
   
-
-
+  cpu;
+  ram;
+  hdd;
+  issue;
+  serviceType;
+  product;
+  productMake;
   isDisabled:boolean = false;
   constructor(public service:AppService) { 
-    this.service.getAllMap();
+    this.service.getAllMap().subscribe(data=>{
+      
+      this.cpu = utils.filter(data,"CPU");
+      this.ram = utils.filter(data,"RAM");
+      this.hdd = utils.filter(data,"HDD");
+      this.issue = utils.filter(data,"ISSUE");    
+      this.serviceType = utils.filter(data,"SERVICE TYPE");
+      this.product = utils.filter(data,"PRODUCT");
+      this.productMake = utils.filter(data,"PRODUCT MAKE");
+  
+    });
   }
 
   ngOnInit() {
-    let options = this.service.options;
-    //this.service_list = utils.filter(options,"SERVICE TYPE");
-
     this.service.getRow().subscribe(data=>{
       if(data.length==0){
         this.clear();

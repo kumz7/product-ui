@@ -128,10 +128,8 @@ export class AppService {
   public getMapbyKey(key:string):Observable<any>{
     return this.request.get(environment.OPTIONS_ALL_URL+"/"+key);
   }
-  public getAllMap(){
-    this.request.get(environment.ALL_CATEGORY_OPTIONS).subscribe(data=>{
-      this.options =<any> data;
-    })
+  public getAllMap():Observable<any>{
+    return this.request.get(environment.ALL_CATEGORY_OPTIONS);
   }
   
 }
