@@ -22,17 +22,17 @@ export class IssueComponent implements OnInit {
     // this.object.issue= this.issues[0];
    }
    
-   selectIssue(option:string){
-      this.object.issue = option;
+   selectIssue(option:any){
+      this.object.issue = option.value;
     }
-    selectRam(option:string){
-      this.object.ram = option;
+    selectRam(option:any){
+      this.object.ram = option.value;
     }
-    selectHDD(option:string){
-      this.object.hdd = option;
+    selectHDD(option:any){
+      this.object.hdd = option.value;
     }
-    selectCpu(option:string){
-      this.object.cpu = option;
+    selectCpu(option:any){
+      this.object.cpu = option.value;
     }
       
   ngOnInit() {

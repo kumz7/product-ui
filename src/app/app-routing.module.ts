@@ -8,6 +8,7 @@ import { MenuComponent } from './component/menu/menu.component';
 import { InvoiceComponent } from './component/invoice/invoice.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { InvoiceFinalComponent } from './components/invoice-final/invoice-final.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, 
   { path: 'menu', component: MenuComponent }, 
   { path: 'admin', component: AdminComponent }, 
+  { path: 'final', component: InvoiceFinalComponent }, 
   { path: '**', component: MenuComponent }, 
   { path: '',   redirectTo: '/', pathMatch: 'full' }
 ];

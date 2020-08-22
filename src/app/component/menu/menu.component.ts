@@ -41,7 +41,9 @@ export class MenuComponent implements OnInit {
   
     });
   }
-
+  public invoice(){
+    this.service.gotoInvoice();
+  }
   ngOnInit() {
     this.service.getRow().subscribe(data=>{
       if(data.length==0){

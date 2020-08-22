@@ -112,6 +112,9 @@ export class AppService {
   public gotoJobSheet(){
     this.router.navigateByUrl("/invoice");
   }
+  public gotoInvoice(){
+    this.router.navigateByUrl("/final");
+  }
   /*
     Only perticular day records
   */

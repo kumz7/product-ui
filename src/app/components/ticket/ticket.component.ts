@@ -14,8 +14,8 @@ export class TicketComponent implements OnInit {
     
    }
 
-   selectServiceType(option:string){
-      this.object.service_type = option;
+   selectServiceType(option:any){
+      this.object.service_type = option.value;
     }
 
   ngOnInit() {

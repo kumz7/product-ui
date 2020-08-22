@@ -20,10 +20,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
   }
-  selectProductMake(option:string){
-    this.object.product_make = option;
+  selectProductMake(option:any){
+    this.object.product_make = option.value;
   }
-  selectProduct(option:string){
-    this.object.product = option;
+  selectProduct(option:any){
+    this.object.product = option.value;
   }
 }

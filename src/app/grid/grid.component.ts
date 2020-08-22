@@ -9,6 +9,8 @@ import { AppService } from '../components/app.service';
 })
 export class GridComponent implements OnChanges {
   @Input() tableData:any;
+  @Input() invoiceData:Array<any>;
+  @Input() header:Array<string>;
   @Output() selectedRecord = new EventEmitter();
   private gridApi: GridApi;
   activeCol  = ['name','contact','ticket']
@@ -18,6 +20,19 @@ export class GridComponent implements OnChanges {
   constructor(private service:AppService){
   }
   ngOnChanges(changes: SimpleChanges): void{
+    if(this.header){
+      this.header.forEach(hdr=>{
+        this.columnDefs.push({'headerName':hdr,'field':hdr,sortable: true, filter: true});
+      })
+    }
+    if(this.invoiceData){
+      this.tableData = null;
+      this.rowData = [];
+      this.invoiceData.forEach(element => {
+        this.rowData.push(element);   
+      });
+      // this.columnDefs.push({'headerName':key,'field':key,sortable: true, filter: true});
+    }
     if(this.tableData) {
       this.columnDefs = [];
       this.rowData = [];
