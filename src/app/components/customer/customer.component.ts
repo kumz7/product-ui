@@ -22,7 +22,7 @@ export class CustomerComponent implements OnInit {
 
    }
    search(){
-    this.router.navigate(["/search"], { queryParams: { key:this.key } });
+    this.router.navigate(["/search"], { queryParams: { key:this.key,back:'/menu' } });
    }
   ngOnChanges(changes: SimpleChanges): void{
     

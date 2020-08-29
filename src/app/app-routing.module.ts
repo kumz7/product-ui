@@ -9,6 +9,7 @@ import { InvoiceComponent } from './component/invoice/invoice.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { InvoiceFinalComponent } from './components/invoice-final/invoice-final.component';
+import { AdminGuardGuard } from './admin-guard.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'invoice', component: InvoiceComponent }, 
   { path: 'login', component: LoginComponent }, 
   { path: 'menu', component: MenuComponent }, 
-  { path: 'admin', component: AdminComponent }, 
+  { path: 'admin', component: AdminComponent,canActivate: [AdminGuardGuard], }, 
   { path: 'final', component: InvoiceFinalComponent }, 
   { path: '**', component: MenuComponent }, 
   { path: '',   redirectTo: '/', pathMatch: 'full' }

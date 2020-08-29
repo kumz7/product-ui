@@ -8,7 +8,7 @@
                 <label for="usr">Ticket #</label>
             </div>
             <div  class="col-8">
-                <input type="text" class="form-control" disabled [(ngModel)]="object.ticket">
+                <input type="text" class="form-control"  disabled [(ngModel)]="object.ticket">
             </div>
           </div>
           <div class="row"  >
@@ -16,7 +16,7 @@
                 <label for="usr">Date</label>
             </div>
             <div  class="col-8">
-                <input type="text" class="form-control" disabled [(ngModel)]="object.date">
+                <input type="datetime-local" id="date" class="form-control" style="text-align: center; font-size: 22px;" [(ngModel)]="object.date">
             </div>
           </div>
           <div class="row"  >

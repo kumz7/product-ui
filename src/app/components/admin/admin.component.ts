@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
   object:StoreMap;
   value:string;
   values:Array<StoreMap>;
-  options:Array<string> = ["SERVICE TYPE","CPU","RAM","HDD","ADPT","ODD","P.CORD","BAG","PRODUCT","PRODUCT MAKE","ISSUE"];
+  options:Array<string> = ["SERVICE TYPE","CPU","RAM","HDD","ADPT","ODD","P.CORD","BAG","PRODUCT","PRODUCT MAKE","ISSUE","mail.smtp.auth","mail.smtp.starttls.enable","mail.smtp.host","mail.smtp.port","mail.smtp.email","mail.smtp.password"];
   constructor(public service:AppService) { 
     this.object=new StoreMap();
     this.selected = this.options[0];
@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
     this.object.key=this.selected;
     this.object.value=this.value;
     this.service.storeMap(this.object).subscribe(data=>{ 
-      console.log(data);
+      this.values.push(data);
     });
   }
   delete(){

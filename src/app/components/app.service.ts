@@ -8,6 +8,7 @@ import { Router, Data } from '@angular/router';
 import { mType } from '../toast/mType';
 import { environment } from 'src/environments/environment';
 import { StoreMap } from './admin/StoreMap';
+import { env } from 'process';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +19,21 @@ export class AppService {
   msgHdr:string;
   msg:string;
   type:mType;
+  admin:any;
+  
+  isError = false;
+  currentData:any;
+  incommingData:any;
+
   public options:Array<StoreMap>;
+  public getCurrentData(){
+    return this.currentData;
+  }
+  public sentEmail(image:any){
+    this.request.post(environment.EMAIL_URL,image).subscribe(data=>{
+      console.log(data);
+    })
+  }
   public setRow(obj:any){
     this.selectedRow.next(obj);
   }
@@ -38,9 +53,6 @@ export class AppService {
       this.msg = null;
     }, 3000);
   }
-  isError = false;
-  currentData:any;
-  incommingData:any;
   public doMapNavigatetoInvoice():any{
     this.isSpinner=true;
     let subscribe = this.getRow().subscribe(data=>{
@@ -134,5 +146,13 @@ export class AppService {
   public getAllMap():Observable<any>{
     return this.request.get(environment.ALL_CATEGORY_OPTIONS);
   }
-  
-}
+  public isAdmin():Observable<any>{ 
+    return this.request.get(environment.IS_ADMIN);
+  }
+  public gotoAdmin() {
+    this.router.navigateByUrl("/admin");   
+  }
+  public gotoMenu(){
+    this.router.navigateByUrl("/menu");
+  }
+} 

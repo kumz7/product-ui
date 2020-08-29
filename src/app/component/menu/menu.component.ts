@@ -6,6 +6,7 @@ import { issue } from 'src/app/components/issue/issue';
 import { estimation } from 'src/app/components/estimation/estimation';
 import { product } from 'src/app/components/product/product';
 import { Engineer } from 'src/app/components/engineer/engineer';
+import { Invoice } from 'src/app/components/invoice-final/invoice';
 import { mType } from 'src/app/toast/mType';
 import { HttpBackend } from '@angular/common/http';
 import { utils } from 'src/app/components/utils';
@@ -19,7 +20,7 @@ export class MenuComponent implements OnInit {
   isEnabled:boolean=true;
   isProduct:boolean = true;
   object:any;
-  
+  isAdmin:boolean = false;
   cpu;
   ram;
   hdd;
@@ -29,6 +30,7 @@ export class MenuComponent implements OnInit {
   productMake;
   isDisabled:boolean = false;
   constructor(public service:AppService) { 
+    
     this.service.getAllMap().subscribe(data=>{
       
       this.cpu = utils.filter(data,"CPU");
@@ -45,6 +47,10 @@ export class MenuComponent implements OnInit {
     this.service.gotoInvoice();
   }
   ngOnInit() {
+    this.service.isAdmin().subscribe(data=>{
+      this.isAdmin = data;
+    }
+    );
     this.service.getRow().subscribe(data=>{
       if(data.length==0){
         this.clear();
@@ -78,6 +84,7 @@ export class MenuComponent implements OnInit {
     object.estimation = new estimation();
     object.product = new product();
     object.engineer = new Engineer();
+    object.invoice = new Invoice();
     this.service.setRow(object);
     this.object = object;
     this.isDisabled=true;
@@ -88,5 +95,7 @@ export class MenuComponent implements OnInit {
   public jobsheet(){
     this.service.gotoJobSheet();
   }
-
+  public admin(){
+    this.service.gotoAdmin();
+  }
 }

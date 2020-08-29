@@ -1,7 +1,8 @@
 <app-toast  ></app-toast>
 <div class="container-fluid">
+    <button class="btn btn-light back" (click)="service.gotoMenu()" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
     <div class="card">
-      <div class="card-header" ><h6 class="title">Search</h6>        
+      <div class="card-header" ><h3 class="title">.</h3>        
             <div class="input-group col-12 mt-5 search-button">
                 <input type="text" class="form-control" [(ngModel)]="key" placeholder="Search" style="height: 7vh;text-align: center;font-size: 5.5vh;">
                 <div class="input-group-append">

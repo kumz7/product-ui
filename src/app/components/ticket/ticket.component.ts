@@ -19,6 +19,7 @@ export class TicketComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.object.date =  new Date().toISOString().split('T')[0] + "T"+new Date().toLocaleTimeString();
   }
 
 }

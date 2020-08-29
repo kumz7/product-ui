@@ -12,6 +12,7 @@ export class SearchPageComponent implements OnInit {
   tableData:any;
   isGridEnabled:boolean = false;
   key:string;
+  back:string;
   constructor( private service:AppService,
     private router:Router,
     private aRouter:ActivatedRoute
@@ -21,7 +22,7 @@ export class SearchPageComponent implements OnInit {
       this.tableData = data; 
     },
     error=>{
-      this.service.showToast(error.status,JSON.stringify(error),mType.error);
+      this.service.showToast(error.status+":",error.message,mType.error);
       return error;
     },()=>{
       this.service.showToast("Success","Records retrived",mType.success)
@@ -30,13 +31,14 @@ export class SearchPageComponent implements OnInit {
   ngOnInit() {
     this.aRouter.queryParams.subscribe(param=>{
       this.key = param["key"]; 
+      this.back = param["back"];
       this.search();
     })
    // this.tableData = this.service.getAllCustomers();
   }
   setCurrentCustomer(){
     this.service.isDisabled = true;
-    this.router.navigateByUrl('/menu')
+    this.router.navigateByUrl(this.back)
   }
 }
 

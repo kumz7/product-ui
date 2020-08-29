@@ -8,7 +8,7 @@ import { AppService } from '../components/app.service';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnChanges {
-  @Input() tableData:any;
+  @Input() tableData:any=[];
   @Input() invoiceData:Array<any>;
   @Input() header:Array<string>;
   @Output() selectedRecord = new EventEmitter();
@@ -26,14 +26,14 @@ export class GridComponent implements OnChanges {
       })
     }
     if(this.invoiceData){
-      this.tableData = null;
+      this.tableData = [];
       this.rowData = [];
       this.invoiceData.forEach(element => {
         this.rowData.push(element);   
       });
       // this.columnDefs.push({'headerName':key,'field':key,sortable: true, filter: true});
     }
-    if(this.tableData) {
+    else if(this.tableData) {
       this.columnDefs = [];
       this.rowData = [];
       let rowObj = {};
@@ -59,7 +59,8 @@ export class GridComponent implements OnChanges {
       });
     }
     setTimeout(() => {
-      this.gridApi.sizeColumnsToFit();
+      if(this.gridApi)
+        this.gridApi.sizeColumnsToFit();
     }, 1);
   }
   onRowClicked(event:any){

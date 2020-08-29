@@ -10,8 +10,9 @@ export const environment = {
   OPTIONS_URL : "/options",
   OPTIONS_GET_URL : "/getoptions",
   OPTIONS_ALL_URL : "/getalloptions",
-  ALL_CATEGORY_OPTIONS:"alloptions"
-
+  ALL_CATEGORY_OPTIONS:"alloptions",
+  IS_ADMIN:"isadmin",
+  EMAIL_URL:"/sentEmail"
 };
 
 /*
