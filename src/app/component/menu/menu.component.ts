@@ -22,15 +22,24 @@ export class MenuComponent implements OnInit {
   object:any;
   isAdmin:boolean = false;
   cpu;
+  status;
+  parts;
   ram;
   hdd;
   issue;
   serviceType;
   product;
   productMake;
+
+  header;
+  body;
+  buttons;
+
+  onSelection(event){
+      
+  }
   isDisabled:boolean = false;
   constructor(public service:AppService) { 
-    
     this.service.getAllMap().subscribe(data=>{
       
       this.cpu = utils.filter(data,"CPU");
@@ -40,7 +49,8 @@ export class MenuComponent implements OnInit {
       this.serviceType = utils.filter(data,"SERVICE TYPE");
       this.product = utils.filter(data,"PRODUCT");
       this.productMake = utils.filter(data,"PRODUCT MAKE");
-  
+      this.status = utils.filter(data,"CALL STATUS");
+      this.parts = utils.filter(data,"PART REPLACED");    
     });
   }
   public invoice(){
@@ -80,10 +90,11 @@ export class MenuComponent implements OnInit {
     let object:any = {};
     object.customer = new customer();
     object.ticket = new ticket();
+    object.ticket.date =   new Date().toISOString().split('T')[0];
     object.issue = new issue();
     object.estimation = new estimation();
     object.product = new product();
-    object.engineer = new Engineer();
+    object.engineer = [];
     object.invoice = new Invoice();
     this.service.setRow(object);
     this.object = object;
@@ -93,7 +104,9 @@ export class MenuComponent implements OnInit {
     this.service.logout();
   }
   public jobsheet(){
-    this.service.gotoJobSheet();
+    this.header="confirm";
+    this.body="How do you want to continue";
+    this.buttons=["Email","Print"];
   }
   public admin(){
     this.service.gotoAdmin();

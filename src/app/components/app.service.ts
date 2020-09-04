@@ -9,6 +9,7 @@ import { mType } from '../toast/mType';
 import { environment } from 'src/environments/environment';
 import { StoreMap } from './admin/StoreMap';
 import { env } from 'process';
+import { Engineer } from './engineer/engineer';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class AppService {
   msg:string;
   type:mType;
   admin:any;
-  
+  engineer:Engineer;
   isError = false;
   currentData:any;
   incommingData:any;
@@ -29,10 +30,8 @@ export class AppService {
   public getCurrentData(){
     return this.currentData;
   }
-  public sentEmail(image:any){
-    this.request.post(environment.EMAIL_URL,image).subscribe(data=>{
-      console.log(data);
-    })
+  public sentEmail(image:any,name,mail){
+    return this.request.post(environment.EMAIL_URL+"/"+name+"/"+mail,image);
   }
   public setRow(obj:any){
     this.selectedRow.next(obj);
@@ -64,6 +63,8 @@ export class AppService {
         return;
       }
       subscribe.unsubscribe();
+      if(this.engineer.remarks.trim().length!=0)
+        this.currentData.engineer.push(this.engineer);
       this.request.post(environment.STORE_OBJECT_URL,this.currentData,{responseType: 'text'}).subscribe(data=>{
         this.incommingData = JSON.parse(data); 
         this.setRow(this.incommingData);
@@ -121,8 +122,11 @@ export class AppService {
     return this.request.get(environment.SEARCH_RESULT_URL+"/"+key);
   }
 
-  public gotoJobSheet(){
-    this.router.navigateByUrl("/invoice");
+  public gotoJobSheet(param){
+    if(param=="exit")
+      return;
+    this.router.navigate(["/invoice"], { queryParams: { type:param} });
+    //this.router.navigateByUrl("/invoice");
   }
   public gotoInvoice(){
     this.router.navigateByUrl("/final");

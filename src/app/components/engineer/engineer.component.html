@@ -1,14 +1,35 @@
 <div class="container-fluid" *ngIf="object">
     <app-disable-component [isDisabled]="true"></app-disable-component> 
-      <div class="card">
-        <div class="card-header"><h6>Engineer Concent</h6></div>
-        <div class="card-body">   
+    <div class="card" >
+    <div class="card-header"><h6>Engineer Concent</h6><button type="button" (click)="showTable()" class="btn btn-primary">  <i class="fa fa-table" aria-hidden="true"></i> </button></div>
+    
+<div class="card-body" [hidden]="isList">   
+    <div class="row">
+        <div class="col-6">
+        <table class="table ">
+        <tbody>
+            <tr>
+                <td>Engineer Remarks</td>
+                <td>Engineer Parts</td>
+                <td>Call Status</td>
+            </tr>
+            <tr *ngFor="let view of object">
+                <td>{{view.remarks}}</td>
+                <td>{{view.parts}}</td>
+                <td>{{view.status}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+</div>
+        <div class="card-body" [hidden]="!isList">   
             <div class="row"  >
                 <div class="col-4" style="text-align: right;">
                     <label for="usr">Engineer Remarks</label>
                 </div>
                 <div  class="col-8">
-                    <textarea class="form-control" rows="9" [(ngModel)]="object.remarks" id="comment"></textarea>
+                    <textarea class="form-control" rows="9" [(ngModel)]="service.engineer.remarks" id="comment"></textarea>
                 </div>
               </div>
               
@@ -19,10 +40,10 @@
                 <div  class="col-8">
                     <div class="dropdown" dropdown>
                         <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
-                          <span class="caret">{{object.status}}</span>
+                          <span class="caret">{{service.engineer.status}}</span>
                         </button>
                         <ul *dropdownMenu class="dropdown-menu" role="menu">
-                          <li role="menuitem" *ngFor="let option of status" (click)="selectStatus(option)"><button class="dropdown-item" >{{option}}</button></li>
+                          <li role="menuitem" *ngFor="let option of status" (click)="selectStatus(option.value)"><button class="dropdown-item" >{{option.value}}</button></li>
                         </ul>
                     </div>
                 </div>
@@ -35,10 +56,10 @@
                         <div  class="col-8">
                             <div class="dropdown" dropdown>
                                 <button dropdownToggle type="button" style="width:100%" class="btn btn-primary dropdown-toggle">
-                                <span class="caret">{{object.parts}}</span>
+                                <span class="caret">{{service.engineer.parts}}</span>
                                 </button>
                                 <ul *dropdownMenu class="dropdown-menu" role="menu">
-                                <li role="menuitem" *ngFor="let option of parts" (click)="selectParts(option)"><button class="dropdown-item" >{{option}}</button></li>
+                                <li role="menuitem" *ngFor="let option of parts" (click)="selectParts(option.value)"><button class="dropdown-item" >{{option.value}}</button></li>
                                 </ul>
                             </div>
                         </div>

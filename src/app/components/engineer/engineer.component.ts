@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Engineer } from './engineer';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-engineer',
@@ -8,19 +9,24 @@ import { Engineer } from './engineer';
 })
 export class EngineerComponent implements OnInit {
   @Input() isDisabled:boolean;
-  @Input() object:Engineer;
-
+  @Input() object:Engineer[];
+  aparts;astatus;
   remarks:string ="";
-  parts:Array<string> = ["motherboard","display","keyboard","tracking pad","serial port"];
-  status:Array<string> = ["initiated","inprogress","completed"];
-  constructor() { }
-
+  @Input() parts:Array<string> = [];
+  @Input() status:Array<string> = [];
+  constructor(public service:AppService) { }
+  isList:boolean = true;
   ngOnInit() {
+    this.service.engineer = new Engineer();
+  }
+  showTable(){
+    this.isList=!this.isList;
   }
   selectStatus(option){
-    this.object.status = option;
+
+    this.service.engineer.status =  option;
   }
   selectParts(option){
-    this.object.parts = option;
+    this.service.engineer.parts =  option;
   }
 }

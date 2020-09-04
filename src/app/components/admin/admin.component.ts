@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
   object:StoreMap;
   value:string;
   values:Array<StoreMap>;
-  options:Array<string> = ["SERVICE TYPE","CPU","RAM","HDD","ADPT","ODD","P.CORD","BAG","PRODUCT","PRODUCT MAKE","ISSUE","mail.smtp.auth","mail.smtp.starttls.enable","mail.smtp.host","mail.smtp.port","mail.smtp.email","mail.smtp.password"];
+  options:Array<string> = ["SERVICE TYPE","CPU","RAM","PRODUCT","PRODUCT MAKE","ISSUE","CALL STATUS","PART REPLACED","mail.smtp.auth","mail.smtp.starttls.enable","mail.smtp.host","mail.smtp.port","mail.smtp.email","mail.smtp.password"];
   constructor(public service:AppService) { 
     this.object=new StoreMap();
     this.selected = this.options[0];

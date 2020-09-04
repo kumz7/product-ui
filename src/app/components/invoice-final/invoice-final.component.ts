@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
-import { of } from 'rxjs';
 import { AppService } from '../app.service';
 import { Invoice } from './invoice';
 import { Router } from '@angular/router';
-
+import html2canvas from 'html2canvas';  
 @Component({
   selector: 'app-invoice-final',
   templateUrl: './invoice-final.component.html',
@@ -11,7 +10,13 @@ import { Router } from '@angular/router';
 })
 export class InvoiceFinalComponent implements OnInit, AfterContentInit {
   object:any;
+  height:string="30vh";
   key:string;
+  header;
+  body;
+  buttons;
+  contentDataURL:string;
+  isPrint:boolean=false;
   currentPrice:number = 0;
   obj:Array<any>=[];
   description:string;
@@ -25,13 +30,14 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
     this.total = this.qty * this.unitprice - this.discount;
   }
   ngAfterContentInit(){
-    this.object.invoice.date = new Date().toISOString().split('T')[0] + "T"+new Date().toLocaleTimeString();
+    if(this.object.invoice&&this.object.invoice.date.trim().length==0)
+      this.object.invoice.date = new Date().toISOString().split('T')[0] ; //+ "T"+new Date().toLocaleTimeString()
   }
   calcTot(){
     this.object.invoice.sub_total=this.currentPrice;
-    this.object.invoice.sales_tax=(this.currentPrice/100)*18;
-    this.object.invoice.total_rate=this.object.estimation.advance_amount;
-    this.object.invoice.total=(parseInt(this.object.invoice.others)+this.object.invoice.sub_total+this.object.invoice.sales_tax)-this.object.invoice.total_rate;
+    this.object.invoice.sales_tax=0;
+    this.object.invoice.total_rate=this.object.invoice.sub_total - this.object.estimation.advance_amount;
+    this.object.invoice.total=(parseInt(this.object.invoice.others)+this.object.invoice.total_rate);
   }
   search(){
     this.router.navigate(["/search"], { queryParams: { key:this.key,back:'/final' } });
@@ -39,14 +45,39 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
   cls(){
     this.key = "";
   }
+  print(type){
+    if(type=="exit"){
+      this.isPrint = false; 
+      return;
+    }
+    if(type=="Email"){
+    let htmlData:any = document.getElementsByClassName("card")[0];
+    html2canvas(htmlData).then(canvas=>{
+      var imgWidth = document.getElementsByClassName("card")[0].clientWidth;   
+      var pageHeight = document.getElementsByClassName("card")[0].clientHeight;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;
+      this.contentDataURL = canvas.toDataURL('image/png');  
+      let contentDataURL = canvas.toDataURL('image/png');
+      this.service.sentEmail(contentDataURL.split(",")[1],this.object.customer.name,this.object.customer.mail).subscribe(data=>{},err=>{},()=>{
+      });
+    })
+    this.isPrint = false;
+  }
+  else
+    setTimeout(() => {
+      window.print(); 
+      this.isPrint = false;
+    }, 500);
+  }
   add(){
     let obj:any = {};
     obj.Description = this.description;
-    obj.Qty = this.qty;
-    obj["Unit Price"] = this.unitprice;
-    obj.Discount = this.discount;
-    obj.Total = this.total;
-    this.currentPrice+= obj.Total;
+    obj.Qty = ""+this.qty;
+    obj["Unit Price"] = ""+this.unitprice;
+    obj.Discount = ""+this.discount;
+    obj.Total = ""+this.total;
+    this.currentPrice+= parseInt(obj.Total);
     let tobj = [];
     this.obj.forEach(data=>{
       tobj.push(data);
@@ -78,7 +109,7 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
     this.reset();
     this.service.getRow().subscribe(data=>{
       this.object = data;
-      if(this.object.invoice.fields)
+      if(this.object.invoice&&this.object.invoice.fields)
       this.object.invoice.fields.forEach(element => {
         // this.obj.push(element);
         let obj:any = {};
@@ -93,7 +124,12 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
     })
   }
   save(){
+    this.isPrint = true;
     this.service.setRow(this.object);
     this.service.doMapNavigatetoInvoice();
+    this.obj = [];
+    this.header="confirm";
+    this.body="How do you want to continue";
+    this.buttons=["Email","Print"];
   }
 }

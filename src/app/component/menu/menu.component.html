@@ -18,7 +18,7 @@
 </div>
 <div class="row" *ngIf="isEnabled">
     <app-product [product_list]="product" [product_make_list]="productMake" [isDisabled]="isDisabled" class="col" [hidden]="!isProduct" style="padding-right:0px" [object]="object.product"></app-product>
-    <app-engineer [isDisabled]="isDisabled"  class="col" style="padding-right:0px" [object]="object.engineer" [hidden]="isProduct"></app-engineer>
+    <app-engineer [parts]="parts" [status]="status" [isDisabled]="isDisabled"  class="col" style="padding-right:0px" [object]="object.engineer" [hidden]="isProduct"></app-engineer>
     <app-issue  [cpu]="cpu" [hdd]="hdd" [ram]="ram" [issues]="issue" [isDisabled]="isDisabled" class="col" style="padding-left:0px" [object]="object.issue"></app-issue>
 </div>
 <div *ngIf="isEnabled">
@@ -31,9 +31,16 @@
         <div  class="col"><button type="button" (click)="engineer()" class="btn btn-info" style="width:100%" [attr.disabled]="isDisabled?'disabled':null"><i class="fa fa-wrench " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="jobsheet()" [attr.disabled]="isDisabled?'disabled':null" class="btn btn-warning" style="width:100%"><i class="fa fa-print " aria-hidden="true"></i></button></div>
         
-        <div  class="col"><button type="button" (click)="invoice()" class="btn btn-info" [attr.disabled]="isDisabled?'disabled':null" style="width:100%"><i class="fa fa-newspaper-o " aria-hidden="true"></i></button></div>
+        <div  class="col"><button type="button" (click)="invoice()" class="btn btn-info"  style="width:100%"><i class="fa fa-newspaper-o " aria-hidden="true"></i></button></div>
         <div  class="col" *ngIf="isAdmin" ><button type="button" (click)="admin()" class="btn btn-info" style="width:100%"><i class="fa fa-user-secret " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="clear()" class="btn btn-secondary" style="width:100%"><i class="fa fa-undo " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="logout()" class="btn btn-danger" style="width:100%"><i class="fa fa-power-off " aria-hidden="true"></i></button></div>
     </div>
 </div>
+<app-confirm-button [header]="header" [body]="body" [buttons]="buttons" 
+(onSelection)="service.gotoJobSheet($event)"
+style="
+    position: fixed;
+    z-index: 99999;
+" 
+></app-confirm-button>

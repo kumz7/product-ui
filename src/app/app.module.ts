@@ -26,6 +26,7 @@ import {  Data } from '@angular/router';
 import { LoadingComponent } from './components/loading/loading.component';
 import { InvoiceFinalComponent } from './components/invoice-final/invoice-final.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ConfirmButtonComponent } from './confirm-button/confirm-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { AdminComponent } from './components/admin/admin.component';
     LoginComponent,
     LoadingComponent,
     InvoiceFinalComponent,
-    AdminComponent
+    AdminComponent,
+    ConfirmButtonComponent
   ],
   imports: [
     BrowserModule,

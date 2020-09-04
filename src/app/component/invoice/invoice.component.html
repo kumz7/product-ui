@@ -6,7 +6,7 @@
                 <h4>Repair and Service Report</h4>
             </div>
             <div class="col-5">
-                <div>  <img src="assets/logo.png" style="width: 241px;height: 54px;" class="rounded" alt="Cinque Terre" width="304" height="236"> </div>
+                <div>  <img src="assets/logo.png"  class="rounded img" alt="Cinque Terre" width="304" height="236"> </div>
             </div>
         </div>
     </div>
@@ -91,15 +91,15 @@
             <tbody>
                 <tr>
                     <td>HDD</td>
-                    <td>{{object.issue.hdd}}</td>
+                    <td>{{object.issue.hdd?'Yes':'No'}}</td>
                 </tr>
                 <tr>
                     <td>CPU</td>
-                    <td>{{object.issue.cpu}}</td>
+                    <td>{{object.issue.cpu?'Yes':'No'}}</td>
                 </tr>
                 <tr>
                     <td>ADPT</td>
-                    <td>{{object.issue.adpt}}</td>
+                    <td>{{object.issue.adpt?'Yes':'No'}}</td>
                 </tr>
         </tbody>
         </table>
@@ -109,15 +109,15 @@
             <tbody>
                 <tr>
                     <td>RAM</td>
-                    <td>{{object.issue.ram}}</td>
+                    <td>{{object.issue.ram?'Yes':'No'}}</td>
                 </tr>
                 <tr>
                     <td>ODD</td>
-                    <td>{{object.issue.odd}}</td>
+                    <td>{{object.issue.odd?'Yes':'No'}}</td>
                 </tr>
                 <tr>
                     <td>BAG</td>
-                    <td>{{object.issue.bag}}</td>
+                    <td>{{object.issue.bag?'Yes':'No'}}</td>
                 </tr>
         </tbody>
         </table>
@@ -125,21 +125,15 @@
 </div>
 
 <h5>Issue Details</h5>
-    <div class="row">
-                <div class="col col-12">
-                    <table class="table">
-                        <tbody>
-                                <tr>
-                                    <td>Issue</td>
-                                    <td>{{object.issue.issue}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Issue Description</td>
-                                    <td>{{object.issue.issue_description}}</td>
-                                </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="row col-12 pad">
+                <div class="row col-12">
+                        <div class="col-3">Issue</div>
+                        <div class="col-9">{{object.issue.issue}}</div>
+                </div>
+                <div class="row col-12">
+                    <div  class="col-3">Issue Description</div>
+                    <div  class="col-9">{{object.issue.issue_description}}</div>
+                </div>
     </div>
 
 <h5>Repair Estimation Cost</h5>

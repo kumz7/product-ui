@@ -28,8 +28,10 @@
 }
 
 .bg-image{
+    height: 200vh;
+    overflow: hidden;
     background-image:url('assets/background.jpg'); 
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;

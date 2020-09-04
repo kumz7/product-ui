@@ -8,18 +8,27 @@ import { AppService } from '../components/app.service';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnChanges {
+  @Input() print:boolean;
+  @Input() isPrint:boolean;
   @Input() tableData:any=[];
   @Input() invoiceData:Array<any>;
   @Input() header:Array<string>;
   @Output() selectedRecord = new EventEmitter();
   private gridApi: GridApi;
-  activeCol  = ['name','contact','ticket']
+  activeCol  = ['name','contact','ticket','issue']
   columnDefs = [];
   rowData = [];
   title = 'app';
   constructor(private service:AppService){
   }
   ngOnChanges(changes: SimpleChanges): void{
+    if(Object.keys(changes)[0]=="print"&&this.gridApi){
+      if(this.print)
+      this.gridApi.setDomLayout('print');
+    else
+      this.gridApi.setDomLayout(null);
+      return;
+    }
     if(this.header){
       this.header.forEach(hdr=>{
         this.columnDefs.push({'headerName':hdr,'field':hdr,sortable: true, filter: true});
@@ -59,9 +68,10 @@ export class GridComponent implements OnChanges {
       });
     }
     setTimeout(() => {
-      if(this.gridApi)
+      if(this.gridApi){
         this.gridApi.sizeColumnsToFit();
-    }, 1);
+      }
+    }, 150);
   }
   onRowClicked(event:any){
     this.selectedRecord.emit();
@@ -70,6 +80,7 @@ export class GridComponent implements OnChanges {
 
   onGridReady(params) {
     this.gridApi = params.api;
+    this.gridApi.setDomLayout(null);
     params.api.sizeColumnsToFit();
   } 
 }

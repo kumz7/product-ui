@@ -13,9 +13,9 @@ export class SearchPageComponent implements OnInit {
   isGridEnabled:boolean = false;
   key:string;
   back:string;
-  constructor( private service:AppService,
-    private router:Router,
-    private aRouter:ActivatedRoute
+  constructor( public service:AppService,
+    public router:Router,
+    public aRouter:ActivatedRoute
     ) {}
   public search():void{
     this.service.getSearchResult(this.key).subscribe(data=>{
