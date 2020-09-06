@@ -5,7 +5,7 @@
     
 <div class="card-body" [hidden]="isList">   
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
         <table class="table ">
         <tbody>
             <tr>
@@ -17,6 +17,7 @@
                 <td>{{view.remarks}}</td>
                 <td>{{view.parts}}</td>
                 <td>{{view.status}}</td>
+                <td><button class="btn btn-danger" (click)=delete(view.id)>delete</button></td>
             </tr>
         </tbody>
         </table>

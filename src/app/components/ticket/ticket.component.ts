@@ -20,7 +20,7 @@ export class TicketComponent implements OnInit ,OnChanges{
     }
 
   ngOnInit() {
-    this.object.date =  new Date().toISOString().split('T')[0];
+    this.object.date =  new Date().toISOString().split('T')[0]+ "T"+new Date().toLocaleTimeString();
   }
 
 }

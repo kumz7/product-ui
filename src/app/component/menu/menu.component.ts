@@ -41,7 +41,6 @@ export class MenuComponent implements OnInit {
   isDisabled:boolean = false;
   constructor(public service:AppService) { 
     this.service.getAllMap().subscribe(data=>{
-      
       this.cpu = utils.filter(data,"CPU");
       this.ram = utils.filter(data,"RAM");
       this.hdd = utils.filter(data,"HDD");
@@ -63,7 +62,7 @@ export class MenuComponent implements OnInit {
     );
     this.service.getRow().subscribe(data=>{
       if(data.length==0){
-        this.clear();
+        this.clear(false);
       }
       else{
         if(this.service.isDisabled)
@@ -79,6 +78,7 @@ export class MenuComponent implements OnInit {
   }
   public save(){
     this.service.doMapNavigatetoInvoice();
+    this.isDisabled = false;
   }
   public edit(){
     this.isDisabled = true;
@@ -86,21 +86,28 @@ export class MenuComponent implements OnInit {
   public engineer(){
     this.isProduct = !this.isProduct; 
   }
-  public clear(){
+  public clear(msg:boolean=true){
     let object:any = {};
     object.customer = new customer();
     object.ticket = new ticket();
-    object.ticket.date =   new Date().toISOString().split('T')[0];
+    object.ticket.date =   new Date().toISOString().split('T')[0]+ "T"+new Date().toLocaleTimeString();
+    this.service.getTicket().subscribe(data=>{
+      object.ticket.ticket = data;
+    })
     object.issue = new issue();
     object.estimation = new estimation();
     object.product = new product();
     object.engineer = [];
+    this.service.engineer = new Engineer();
     object.invoice = new Invoice();
     this.service.setRow(object);
     this.object = object;
     this.isDisabled=true;
+    if(msg)
+      this.service.showToast("Info","Cleared",mType.info);
   }
   public logout(){
+    this.service.showToast("Info","Logging out",mType.info);
     this.service.logout();
   }
   public jobsheet(){

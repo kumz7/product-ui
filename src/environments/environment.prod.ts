@@ -8,5 +8,7 @@ export const environment = {
   OPTIONS_ALL_URL : "/getalloptions",
   ALL_CATEGORY_OPTIONS:"alloptions",
   IS_ADMIN:"isadmin",
-  EMAIL_URL:"/sentEmail"
+  EMAIL_URL:"/sentEmail",
+  DELETE_ENG_URL:"/engineer/",
+  TICKET_NO:"/ticketno"
 };

@@ -34,7 +34,6 @@
         <div  class="col"><button type="button" (click)="invoice()" class="btn btn-info"  style="width:100%"><i class="fa fa-newspaper-o " aria-hidden="true"></i></button></div>
         <div  class="col" *ngIf="isAdmin" ><button type="button" (click)="admin()" class="btn btn-info" style="width:100%"><i class="fa fa-user-secret " aria-hidden="true"></i></button></div>
         <div  class="col"><button type="button" (click)="clear()" class="btn btn-secondary" style="width:100%"><i class="fa fa-undo " aria-hidden="true"></i></button></div>
-        <div  class="col"><button type="button" (click)="logout()" class="btn btn-danger" style="width:100%"><i class="fa fa-power-off " aria-hidden="true"></i></button></div>
     </div>
 </div>
 <app-confirm-button [header]="header" [body]="body" [buttons]="buttons" 

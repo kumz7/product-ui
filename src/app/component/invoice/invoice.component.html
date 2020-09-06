@@ -1,3 +1,4 @@
+<app-loading [hidden]="!service.isSpinner"></app-loading>
 <div class="container-fluid">    
 <div class="card">
     <div class="card-header">
@@ -157,7 +158,7 @@
                 <tbody>
                         <tr>
                             <td>Repair Amount</td>
-                            <td>total calculated by everything</td>
+                            <td>{{finalAmount}}</td>
                         </tr>
                         <tr>
                             <td>Advance Amount</td>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { AppService } from './components/app.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,21 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
   title = 'product-ui';
-
-  constructor(private route:Router){
+  isMenu:boolean=true;
+  constructor(private route:Router,private service:AppService){
       route.events.subscribe((res:any) => {
-        if(res instanceof NavigationEnd)
-          console.log(res.url);
+        console.log(res.url);
+        if(res instanceof NavigationEnd){
+          if(res.url.startsWith("/menu"))
+            this.isMenu=false;
+          else
+            this.isMenu=true;
+
+        }
       });
+  }
+  back(){
+    window.history.back();
   }
 
 }

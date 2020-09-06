@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { Invoice } from './invoice';
 import { Router } from '@angular/router';
 import html2canvas from 'html2canvas';  
+import { mType } from 'src/app/toast/mType';
 @Component({
   selector: 'app-invoice-final',
   templateUrl: './invoice-final.component.html',
@@ -59,7 +59,12 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
       var heightLeft = imgHeight;
       this.contentDataURL = canvas.toDataURL('image/png');  
       let contentDataURL = canvas.toDataURL('image/png');
-      this.service.sentEmail(contentDataURL.split(",")[1],this.object.customer.name,this.object.customer.mail).subscribe(data=>{},err=>{},()=>{
+      this.service.sentEmail(contentDataURL.split(",")[1],this.object.customer.name,this.object.customer.mail).subscribe(data=>{},err=>{
+        this.service.showToast("Error",err.message,mType.error);
+        this.router.navigateByUrl('/menu');
+      },()=>{
+        this.service.showToast("Success","Mail Sent to "+ this.object.customer.mail ,mType.success);
+        this.router.navigateByUrl('/menu');
       });
     })
     this.isPrint = false;

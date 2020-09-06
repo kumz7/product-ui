@@ -20,6 +20,7 @@ export class AppService {
   msgHdr:string;
   msg:string;
   type:mType;
+  icon:string;
   admin:any;
   engineer:Engineer;
   isError = false;
@@ -47,7 +48,16 @@ export class AppService {
   showToast(hdr,msg,type:mType=mType.success){
     this.msgHdr=hdr;
     this.msg=msg;
-    this.type=type;
+    this.type=type; 
+    if(this.type==mType.error)
+        this.icon = "times"
+    else if(this.type==mType.success)
+      this.icon = "check"
+    else if(this.type==mType.info)
+      this.icon = "info"
+        else
+      this.icon = "exclamation"
+  
     setTimeout(() => {
       this.msg = null;
     }, 3000);
@@ -71,7 +81,7 @@ export class AppService {
       },
       error=>{
         this.isSpinner=false;
-        this.showToast("Error",error,mType.error);
+        this.showToast("Error",error.message,mType.error);
       },
       ()=>{
         this.showToast("Success","Saved!",mType.success);
@@ -121,7 +131,9 @@ export class AppService {
   public getSearchResult(key:string):Observable<any>{
     return this.request.get(environment.SEARCH_RESULT_URL+"/"+key);
   }
-
+  public getTicket():Observable<any>{
+    return this.request.get(environment.TICKET_NO,{responseType: 'text'});
+  }
   public gotoJobSheet(param){
     if(param=="exit")
       return;
@@ -134,8 +146,10 @@ export class AppService {
   /*
     Only perticular day records
   */
-  public getDayMapping():any{
-    //return this.getCustomer("all");
+  public getDayMapping(id):void{
+    this.request.get(environment.STORE_OBJECT_URL+"/"+id).subscribe(data=>{
+      this.setRow(data); 
+    });
   }
   //phis.request.post(environment.STORE_OBJECT_URL,this.currentData,{responseType: 'text'})
   public storeMap(obj:StoreMap):Observable<any>{
@@ -143,6 +157,9 @@ export class AppService {
   }
   public deleteMap(obj:string):Observable<any>{
     return this.request.delete(environment.OPTIONS_URL+"/"+obj);
+  }
+  public deleteEngineer(id:string):Observable<any>{ 
+    return this.request.delete(environment.DELETE_ENG_URL+id);
   }
   public getMapbyKey(key:string):Observable<any>{
     return this.request.get(environment.OPTIONS_ALL_URL+"/"+key);

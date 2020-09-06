@@ -1,5 +1,5 @@
+<app-toast  ></app-toast>
 <div class="container">
-  <button class="btn btn-light back" (click)="service.gotoMenu()" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
     <h2>ADMIN</h2>
     <p>Add custom values to dropdown fields</p>
     <div class="dropdown" dropdown>
@@ -11,15 +11,15 @@
         </ul>
     </div>
   
-<div>
+<div class="overflow-scroll">
     <div class="input-group mb-3" style="margin-top:25px">
         <input type="text" class="form-control" placeholder="Add {{selected}} Entries" [(ngModel)]="value">
         <div class="input-group-append">
-          <button class="input-group-text btn-success" (click)="store()" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+          <button class="input-group-text btn btn-success" (click)="store()" ><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
-        <div class="input-group-append">
+        <!-- <div class="input-group-append">
             <button class="input-group-text btn-danger" (click)="delete()"><i class="fa fa-minus" aria-hidden="true"></i></button>
-          </div>
+          </div> -->
       </div>
   <table class="table table-hover">
     <thead>
@@ -29,7 +29,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let val of values">
-        <td>{{val.value}}</td>
+        <td >{{val.value}}</td>
+        <td ><button (click)="delete(val.id)" class="btn btn-danger"><i class="fa fa-trash " aria-hidden="true"></i></button></td>
       </tr>
     </tbody>
   </table>
