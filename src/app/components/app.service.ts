@@ -15,6 +15,7 @@ import { Engineer } from './engineer/engineer';
 })
 export class AppService {
   private selectedRow:Subject<any> = new BehaviorSubject([]);
+  public topHeader:Subject<any> = new BehaviorSubject([]);
   isDisabled = false;
   isSpinner = false;
   msgHdr:string;
@@ -26,7 +27,6 @@ export class AppService {
   isError = false;
   currentData:any;
   incommingData:any;
-
   public options:Array<StoreMap>;
   public getCurrentData(){
     return this.currentData;
@@ -41,6 +41,7 @@ export class AppService {
     return this.selectedRow;
   }
   constructor(private request:HttpClient,private router:Router) {
+    this.topHeader.next(true);
     this.msgHdr="";
     this.msg="";
     this.type=mType.info;
@@ -73,7 +74,7 @@ export class AppService {
         return;
       }
       subscribe.unsubscribe();
-      if(this.engineer.remarks.trim().length!=0)
+      if(this.engineer&&this.engineer.remarks.trim().length!=0) 
         this.currentData.engineer.push(this.engineer);
       this.request.post(environment.STORE_OBJECT_URL,this.currentData,{responseType: 'text'}).subscribe(data=>{
         this.incommingData = JSON.parse(data); 

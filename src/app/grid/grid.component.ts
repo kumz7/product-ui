@@ -23,13 +23,18 @@ export class GridComponent implements OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void{
     if(Object.keys(changes)[0]=="print"&&this.gridApi){
-      if(this.print)
-      this.gridApi.setDomLayout('print');
+      if(this.print){
+        this.gridApi.setDomLayout('print');
+        setTimeout(() => {
+          this.gridApi.sizeColumnsToFit();
+        }, 100);
+      }
     else
       this.gridApi.setDomLayout(null);
       return;
     }
     if(this.header){
+      this.columnDefs.push({'headerName':'id','field':'id',hide:true,sortable: true, filter: true});
       this.header.forEach(hdr=>{
         this.columnDefs.push({'headerName':hdr,'field':hdr,sortable: true, filter: true});
       })
@@ -37,7 +42,9 @@ export class GridComponent implements OnChanges {
     if(this.invoiceData){
       this.tableData = [];
       this.rowData = [];
-      this.invoiceData.forEach(element => {
+
+      this.invoiceData.forEach((element,index) => {
+        element.id=index;
         this.rowData.push(element);   
       });
       // this.columnDefs.push({'headerName':key,'field':key,sortable: true, filter: true});
@@ -74,7 +81,7 @@ export class GridComponent implements OnChanges {
     }, 150);
   }
   onRowClicked(event:any){
-    this.selectedRecord.emit();
+    this.selectedRecord.emit(event);
     this.service.setRow(this.tableData.filter(row => row.id==event.data.id)[0]);
   }
 

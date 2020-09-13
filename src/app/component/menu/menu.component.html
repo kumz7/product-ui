@@ -1,16 +1,6 @@
+<div class="container-fluid" style="    margin-left: 0%;padding:0px">
 <app-toast  ></app-toast>
 <app-loading [hidden]="!service.isSpinner"></app-loading>
-<!-- <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#home">New Ticket</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#customer">Customer Detail</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#invoice">Invoice</a>
-    </li>
-  </ul> -->
 
 <div class="row" *ngIf="isEnabled">
     <app-customer [isDisabled]="isDisabled" (toggleCustomer)="toggleCustomer()" [object]="object.customer" class="col" style="padding-right:0px"></app-customer>
@@ -43,3 +33,4 @@ style="
     z-index: 99999;
 " 
 ></app-confirm-button>
+</div> 

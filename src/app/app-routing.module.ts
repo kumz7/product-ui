@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: 'invoice', component: InvoiceComponent }, 
   { path: 'login', component: LoginComponent }, 
   { path: 'menu', component: MenuComponent }, 
-  { path: 'admin', component: AdminComponent,canActivate: [AdminGuardGuard], }, 
-  { path: 'final', component: InvoiceFinalComponent }, 
+  { path: 'admin', component: AdminComponent,canActivate: [AdminGuardGuard]}, 
+  { path: 'final', component: InvoiceFinalComponent, canActivate:[] }, 
   { path: 'confirm', component: ConfirmButtonComponent }, 
   { path: '**', component: MenuComponent }, 
   { path: '',   redirectTo: '/', pathMatch: 'full' }

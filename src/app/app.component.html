@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row app-header" *ngIf="appHeader">
     <div class="bgsetup col-5">
         <button class="btn col-2 btn-light"  *ngIf="!isMenu" style="font-size: 24px;" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
         <button class="btn col-2 btn-primary" *ngIf="isMenu"   style="font-size: 24px;" (click)="service.gotoMenu()"><i class="fa fa-home" aria-hidden="true"></i></button>
@@ -7,8 +7,8 @@
         <div>  <img src="assets/logo.png"  class="rounded img" alt="Cinque Terre" width="200" height="50"> </div>
     </div>
     
-    <div  class="bgsetup col-2">
-        <button class="btn btn-danger"   style="font-size: 24px; float:right" (click)="service.logout()"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+    <div  class="bgsetup col-2" style="padding-right: 0px;">
+        <button class="btn btn-danger col-6"   style="font-size: 24px; float:right;" (click)="service.logout()"><i class="fa fa-power-off" aria-hidden="true"></i></button>
     </div>
 </div>
 <router-outlet></router-outlet>

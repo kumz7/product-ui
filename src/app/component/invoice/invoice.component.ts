@@ -16,7 +16,7 @@ export class InvoiceComponent implements OnInit, AfterViewInit {
   contentDataURL:string;
   type:string;
   finalAmount:number=0;
-  constructor(private service:AppService,private router:Router,private aRouter:ActivatedRoute) { }
+  constructor(public service:AppService,private router:Router,public aRouter:ActivatedRoute) { }
   ngOnInit(){
 
     this.aRouter.queryParams.subscribe(param=>{

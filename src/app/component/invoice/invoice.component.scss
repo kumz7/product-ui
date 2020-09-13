@@ -12,3 +12,15 @@
     height: 96px;
     float: right;
 }
+.container-fluid{
+    
+}
+
+@media print {
+    body * {
+      visibility: hidden;
+    }
+    .container-fluid{
+        visibility: visible;
+    }
+}

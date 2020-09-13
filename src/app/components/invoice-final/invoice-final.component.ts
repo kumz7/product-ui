@@ -23,6 +23,7 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
   qty:number;
   unitprice:number;
   discount:number;
+  deleteIndex:number=null;
   total:number = 0;
   tableHdr:Array<string>=["Description","Qty","Unit Price","Discount","Total"];
   constructor(public service:AppService,public router:Router) { }
@@ -47,7 +48,8 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
   }
   print(type){
     if(type=="exit"){
-      this.isPrint = false; 
+      this.isPrint = false;
+      this.init();
       return;
     }
     if(type=="Email"){
@@ -69,12 +71,16 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
     })
     this.isPrint = false;
   }
-  else
-    setTimeout(() => {
-      window.print(); 
-      this.isPrint = false;
-    }, 500);
+  else{
+      this.service.topHeader.next(false);    
+      setTimeout(() => {
+        window.print(); 
+        this.isPrint = false;
+        this.service.topHeader.next(true);
+        this.router.navigateByUrl('/menu');
+      }, 500);
   }
+  }//Need to change the billing part Total+Advance(-)-remaining+Others+Grand Total
   add(){
     let obj:any = {};
     obj.Description = this.description;
@@ -87,8 +93,7 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
     this.obj.forEach(data=>{
       tobj.push(data);
     })
-
-   this.calcTot(); 
+    this.calcTot(); 
     
     if(!this.object.invoice.fields)
       this.object.invoice.fields = [];
@@ -103,30 +108,55 @@ export class InvoiceFinalComponent implements OnInit, AfterContentInit {
     this.obj = tobj;
     this.reset()
   }
-  reset(){
+  reset(isDelete=false){
     this.description = ""
     this.qty = 0;
     this.unitprice = 0;
     this.discount=0;
     this.total = 0;
+    if(isDelete){
+      ""+this.description;
+      this.object.invoice.sub_total=0;
+      this.object.invoice.sales_tax=0;
+      this.object.invoice.total_rate=0;
+      this.object.invoice.total=0;
+      this.currentPrice = 0;
+      this.obj = [];
+      this.object.invoice.fields.splice(this.deleteIndex,1);
+      this.deleteIndex=null;
+      this.loadData();  
+    }
+  }
+  delete(row){
+    this.deleteIndex = row.data.id;
   }
   ngOnInit() {
+    this.init();
+  }
+  init(){
     this.reset();
-    this.service.getRow().subscribe(data=>{
+    let sub = this.service.getRow().subscribe(data=>{
       this.object = data;
       if(this.object.invoice&&this.object.invoice.fields)
-      this.object.invoice.fields.forEach(element => {
-        // this.obj.push(element);
-        let obj:any = {};
-        obj.Description = element[0];
-        obj.Qty = element[1];
-        obj["Unit Price"] = element[2];
-        obj.Discount = element[3];
-        obj.Total = element[4];
-        this.currentPrice+= parseInt(obj.Total);
-        this.obj.push(obj);
-      });
+      this.loadData();
     })
+    setTimeout(() => {
+      sub.unsubscribe();
+    }, 500);
+  }
+  loadData(){
+    this.object.invoice.fields.forEach(element => {
+      // this.obj.push(element);
+      let obj:any = {};
+      obj.Description = element[0];
+      obj.Qty = element[1];
+      obj["Unit Price"] = element[2];
+      obj.Discount = element[3];
+      obj.Total = element[4];
+      this.currentPrice+= parseInt(obj.Total);
+      this.obj.push(obj);
+      this.calcTot();
+    });
   }
   save(){
     this.isPrint = true;
